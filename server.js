@@ -27,7 +27,6 @@ app.use(passwordProtected)
 app.get("/", async (req, res) => {
   await fse.ensureFile("./data.txt")
   const existingData = await fse.readFile("./data.txt", "utf8")
-  // res.send(`
 
   res.send(`
     <!DOCTYPE html>
@@ -36,9 +35,10 @@ app.get("/", async (req, res) => {
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Galleria</title>
         <style>
         body{
+          background-color:wheat;
           padding:0;
           margin:0;
           box-sizing:border-box;
@@ -156,7 +156,7 @@ app.post("/delete-photo", async (req, res) => {
 
   cloudinary.uploader.destroy(req.body.id)
 
-  res.redirect("/view-photos")
+  res.redirect("/")
 })
 
 app.listen(3000)
